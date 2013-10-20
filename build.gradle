@@ -1,0 +1,17 @@
+apply plugin: 'java'
+
+group = 'com.example'
+version = '1.0-SNAPSHOT'
+mainClass = 'Main'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.jboss.resteasy:resteasy-jaxrs:3.0.4.Final'
+    compile 'org.jboss.resteasy:resteasy-guice:3.0.4.Final'
+    compile 'com.google.inject:guice:3.0'
+    compile 'com.google.code.gson:gson:2.2.4'
+    compile 'org.eclipse.jetty:jetty-servlet:9.0.5.v20130815'
+}    

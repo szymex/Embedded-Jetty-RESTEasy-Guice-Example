@@ -6,3 +6,5 @@
 *.ear
 /nbactions.xml
 /target/
+/build/
+/.gradle
