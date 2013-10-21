@@ -14,6 +14,7 @@ It uses:
 - asynchronous requests
 - user role authorization
 - simple filter
+- unit tests
 
 
 ## Usage
