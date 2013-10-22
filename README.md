@@ -13,6 +13,7 @@ It uses:
 - gson provider
 - asynchronous requests
 - user role authorization
+- custom object to be injectable with @Context annotation
 - simple filter
 - unit tests
 

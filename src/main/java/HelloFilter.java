@@ -10,6 +10,8 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
+import org.jboss.resteasy.spi.ResteasyProviderFactory;
+import service.User;
 
 @Singleton
 @WebFilter(urlPatterns = "/*")
@@ -25,6 +27,7 @@ public class HelloFilter implements Filter {
 
         //System.out.println("filter: " + req.getRequestURI() + " user: " + sr.getParameter("user"));
         if (sr.getParameter("user") != null) {
+            ResteasyProviderFactory.pushContext(User.class, new User(sr.getParameter("user") ));
             fc.doFilter(new UserRoleRequestWrapper("user", sr.getParameter("user"), req), sr1);
         } else {
             fc.doFilter(req, sr1);

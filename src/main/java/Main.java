@@ -10,8 +10,6 @@ import com.google.inject.Provides;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import javax.inject.Singleton;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.SecurityContext;
 import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.FilterHolder;
 import service.HelloWorld;
@@ -20,15 +18,16 @@ import org.eclipse.jetty.servlet.ServletHolder;
 import org.jboss.resteasy.plugins.guice.RequestScoped;
 import org.jboss.resteasy.plugins.guice.ext.RequestScopeModule;
 import org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher;
+import org.jboss.resteasy.spi.ResteasyProviderFactory;
 import service.User;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
         Injector injector = Guice.createInjector(new HelloModule(args));
-        
+
         injector.getAllBindings();
-        
+
         injector.createChildInjector().getAllBindings();
 
         Server server = new Server(8080);
@@ -74,12 +73,8 @@ public class Main {
 
         @Provides
         @RequestScoped
-        public User provideUser(@Context SecurityContext secContext) {
-            if (secContext.getUserPrincipal() != null) {
-                return new User(secContext.getUserPrincipal().getName());
-            } else {
-                return new User("null");
-            }
+        public User provideUser() {
+            return ResteasyProviderFactory.getContextData(User.class);
         }
     }
 }
