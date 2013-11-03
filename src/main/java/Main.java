@@ -1,5 +1,5 @@
 
-import org.jboss.resteasy.plugins.guice.GuiceResteasyBootstrapServletContextListener2;
+import org.jboss.resteasy.plugins.guice.GuiceResteasyBootstrapServletContextListener;
 import jaxrs.ClientErrorExceptionMapper;
 import jaxrs.HelloResource;
 import jaxrs.GsonMessageBodyHandler;
@@ -32,7 +32,7 @@ public class Main {
 
         Server server = new Server(8080);
         ServletContextHandler servletHandler = new ServletContextHandler();
-        servletHandler.addEventListener(injector.getInstance(GuiceResteasyBootstrapServletContextListener2.class));
+        servletHandler.addEventListener(injector.getInstance(GuiceResteasyBootstrapServletContextListener.class));
 
         ServletHolder sh = new ServletHolder(HttpServletDispatcher.class);
         servletHandler.setInitParameter("resteasy.role.based.security", "true");

@@ -8,7 +8,7 @@ import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.ext.Provider;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
-import org.jboss.resteasy.plugins.guice.GuiceResteasyBootstrapServletContextListener2;
+import org.jboss.resteasy.plugins.guice.GuiceResteasyBootstrapServletContextListener;
 import org.jboss.resteasy.plugins.guice.ext.RequestScopeModule;
 import org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher;
 import org.junit.After;
@@ -28,7 +28,7 @@ public abstract class JettyGuiceRestEasyTest {
 
         server = new Server(8080);
         ServletContextHandler servletHandler = new ServletContextHandler();
-        servletHandler.addEventListener(Guice.createInjector(new TestModule()).getInstance((GuiceResteasyBootstrapServletContextListener2.class)));
+        servletHandler.addEventListener(Guice.createInjector(new TestModule()).getInstance((GuiceResteasyBootstrapServletContextListener.class)));
         servletHandler.addServlet(HttpServletDispatcher.class, "/*");
 
         server.setHandler(servletHandler);

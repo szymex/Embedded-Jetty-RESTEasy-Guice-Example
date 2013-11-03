@@ -32,7 +32,7 @@
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-jaxrs</artifactId>
-            <version>3.0.4.Final</version>
+            <version>3.0.5.Final</version>
             <exclusions>
                 <exclusion>
                     <artifactId>httpclient</artifactId>
@@ -51,7 +51,7 @@
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-guice</artifactId>
-            <version>3.0.4.Final</version>
+            <version>3.0.5.Final</version>
         </dependency>
         
         <!-- TESTS -->
@@ -64,7 +64,7 @@
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-client</artifactId>
-            <version>3.0.4.Final</version>
+            <version>3.0.5.Final</version>
             <scope>test</scope>
         </dependency>
         <dependency>
