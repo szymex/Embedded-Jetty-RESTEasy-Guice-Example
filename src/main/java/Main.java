@@ -37,7 +37,7 @@ public class Main {
         ServletHolder sh = new ServletHolder(HttpServletDispatcher.class);
         servletHandler.setInitParameter("resteasy.role.based.security", "true");
         servletHandler.addFilter(new FilterHolder(injector.getInstance(HelloFilter.class)), "/*", null);
-        servletHandler.addServlet(DefaultServlet.class, "/*");
+        //servletHandler.addServlet(DefaultServlet.class, "/*");
         servletHandler.addServlet(sh, "/*");
 
         server.setHandler(servletHandler);

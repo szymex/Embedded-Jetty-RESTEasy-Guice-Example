@@ -12,7 +12,7 @@
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-servlet</artifactId>
-            <version>9.0.5.v20130815</version>
+            <version>9.1.4.v20140401</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -32,7 +32,7 @@
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-jaxrs</artifactId>
-            <version>3.0.5.Final</version>
+            <version>3.0.7.Final</version>
             <exclusions>
                 <exclusion>
                     <artifactId>httpclient</artifactId>
@@ -51,27 +51,27 @@
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-guice</artifactId>
-            <version>3.0.5.Final</version>
+            <version>3.0.7.Final</version>
         </dependency>
         
         <!-- TESTS -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.10</version>
+            <version>4.11</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-client</artifactId>
-            <version>3.0.5.Final</version>
+            <version>3.0.7.Final</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <artifactId>httpclient</artifactId>
             <groupId>org.apache.httpcomponents</groupId>
             <type>jar</type>
-            <version>4.2.1</version>
+            <version>4.3.3</version>
             <scope>test</scope>
         </dependency>
         <dependency>
