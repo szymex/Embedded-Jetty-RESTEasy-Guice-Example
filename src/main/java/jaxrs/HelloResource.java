@@ -43,34 +43,31 @@ public class HelloResource {
     @Path("/async-hello")
     @Produces(MediaType.TEXT_PLAIN)
     public void getAsyncData(@Suspended final AsyncResponse response,
-            @QueryParam("d") @DefaultValue("1") final int delaySec) throws IOException {
+                             @QueryParam("d") @DefaultValue("1") final int delaySec) throws IOException {
 
         response.setTimeout(6, TimeUnit.SECONDS);
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(delaySec * 1000);
+        new Thread(() -> {
+            try {
+                Thread.sleep(delaySec * 1000);
 
-                    if (!response.isSuspended()) {
-                        System.out.println("Async response is not suspended");
-                        return;
-                    }
-
-                    if (!response.resume(Response.ok(helloWord.say()).build())) {
-                        System.out.println("Async response not resumed");
-                    }
-                } catch (Exception ex) {
-                    ex.printStackTrace();
+                if (!response.isSuspended()) {
+                    System.out.println("Async response is not suspended");
+                    return;
                 }
+
+                if (!response.resume(Response.ok(helloWord.say()).build())) {
+                    System.out.println("Async response not resumed");
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
         }).start();
     }
 
     public static class Data {
 
-        private String text;
+        private final String text;
 
         public Data(String data) {
             this.text = data;

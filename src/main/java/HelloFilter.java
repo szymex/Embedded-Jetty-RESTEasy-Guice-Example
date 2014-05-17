@@ -1,3 +1,4 @@
+
 import java.io.IOException;
 import java.security.Principal;
 import javax.inject.Singleton;
@@ -27,7 +28,7 @@ public class HelloFilter implements Filter {
 
         //System.out.println("filter: " + req.getRequestURI() + " user: " + sr.getParameter("user"));
         if (sr.getParameter("user") != null) {
-            ResteasyProviderFactory.pushContext(User.class, new User(sr.getParameter("user") ));
+            ResteasyProviderFactory.pushContext(User.class, new User(sr.getParameter("user")));
             fc.doFilter(new UserRoleRequestWrapper("user", sr.getParameter("user"), req), sr1);
         } else {
             fc.doFilter(req, sr1);
@@ -41,8 +42,8 @@ public class HelloFilter implements Filter {
 
     private class UserRoleRequestWrapper extends HttpServletRequestWrapper {
 
-        private String role;
-        private String user;
+        private final String role;
+        private final String user;
 
         public UserRoleRequestWrapper(String role, String user, HttpServletRequest request) {
             super(request);
@@ -64,12 +65,7 @@ public class HelloFilter implements Filter {
                 return super.getUserPrincipal();
             }
 
-            return new Principal() {
-                @Override
-                public String getName() {
-                    return user;
-                }
-            };
+            return () -> user;
         }
     }
 }

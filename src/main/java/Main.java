@@ -1,24 +1,23 @@
 
-import org.jboss.resteasy.plugins.guice.GuiceResteasyBootstrapServletContextListener;
-import jaxrs.ClientErrorExceptionMapper;
-import jaxrs.HelloResource;
-import jaxrs.GsonMessageBodyHandler;
-import service.HelloWorldPL;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Provides;
-import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.servlet.ServletContextHandler;
 import javax.inject.Singleton;
-import org.eclipse.jetty.servlet.DefaultServlet;
+import jaxrs.ClientErrorExceptionMapper;
+import jaxrs.GsonMessageBodyHandler;
+import jaxrs.HelloResource;
+import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.FilterHolder;
-import service.HelloWorld;
-import service.HelloWorldFI;
+import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
+import org.jboss.resteasy.plugins.guice.GuiceResteasyBootstrapServletContextListener;
 import org.jboss.resteasy.plugins.guice.RequestScoped;
 import org.jboss.resteasy.plugins.guice.ext.RequestScopeModule;
 import org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher;
 import org.jboss.resteasy.spi.ResteasyProviderFactory;
+import service.HelloWorld;
+import service.HelloWorldFI;
+import service.HelloWorldPL;
 import service.User;
 
 public class Main {

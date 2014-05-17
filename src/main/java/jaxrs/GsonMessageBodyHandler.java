@@ -1,6 +1,7 @@
 package jaxrs;
 
-
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -8,7 +9,6 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
@@ -17,9 +17,6 @@ import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.ext.MessageBodyReader;
 import javax.ws.rs.ext.MessageBodyWriter;
 import javax.ws.rs.ext.Provider;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 @Provider
 @Produces(MediaType.APPLICATION_JSON)
@@ -39,7 +36,7 @@ public final class GsonMessageBodyHandler implements MessageBodyWriter<Object>, 
 
     @Override
     public boolean isReadable(Class<?> type, Type genericType,
-            java.lang.annotation.Annotation[] annotations, MediaType mediaType) {
+                              java.lang.annotation.Annotation[] annotations, MediaType mediaType) {
         return true;
     }
 

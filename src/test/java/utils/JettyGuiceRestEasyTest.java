@@ -15,12 +15,12 @@ import org.junit.After;
 import org.junit.Before;
 
 /**
- *
  * @author szymon
  */
 public abstract class JettyGuiceRestEasyTest {
 
     protected abstract void configure(Binder b);
+
     private Server server;
 
     @Before

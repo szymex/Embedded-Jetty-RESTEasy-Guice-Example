@@ -7,8 +7,8 @@ import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
 /**
- * Adds human readable text to client errors, in addition avoids printing 
- * stack trace with exception.
+ * Adds human readable text to client errors, in addition avoids printing stack
+ * trace with exception.
  *
  * @author szymon
  */
