@@ -1,5 +1,5 @@
 
-import org.jboss.resteasy.plugins.guice.GuiceResteasyBootstrapServletContextListener2;
+import org.jboss.resteasy.plugins.guice.GuiceResteasyBootstrapServletContextListener;
 import jaxrs.ClientErrorExceptionMapper;
 import jaxrs.HelloResource;
 import jaxrs.GsonMessageBodyHandler;
@@ -7,6 +7,7 @@ import service.HelloWorldPL;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Provides;
+
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import javax.inject.Singleton;
@@ -33,11 +34,13 @@ public class Main {
 
         Server server = new Server(8080);
         ServletContextHandler servletHandler = new ServletContextHandler();
-        servletHandler.addEventListener(injector.getInstance(GuiceResteasyBootstrapServletContextListener2.class));
+        servletHandler.addEventListener(injector.getInstance(GuiceResteasyBootstrapServletContextListener.class));
 
         ServletHolder sh = new ServletHolder(HttpServletDispatcher.class);
         servletHandler.setInitParameter("resteasy.role.based.security", "true");
         servletHandler.addFilter(new FilterHolder(injector.getInstance(HelloFilter.class)), "/*", null);
+        
+        servletHandler.getServletHandler().setAllowDuplicateMappings(true);
         servletHandler.addServlet(DefaultServlet.class, "/*");
         servletHandler.addServlet(sh, "/*");
 
